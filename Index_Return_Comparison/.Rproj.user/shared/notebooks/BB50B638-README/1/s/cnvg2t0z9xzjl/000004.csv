@@ -1,0 +1,11 @@
+"0","cumreturns_financials <- 
+monthlyreturns %>% 
+  filter(sector %in% c(""Financials"")) %>% 
+  group_by(country, ticker) %>% 
+  mutate(monthly_cumreturns = cumprod( 1 + weighted_monthly_returns)) %>% 
+  group_by(date, country) %>% 
+ungroup()
+"
+"2","Error in grouped_df_impl(data, unname(vars), drop) : 
+  Column `ticker` is unknown
+"

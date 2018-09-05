@@ -1,0 +1,4 @@
+"0","names(data) <- c(""date"", ""ticker"" ""index"", ""name"", ""cap"", ""sector"", ""industry"", ""country"")
+"
+"2","Error: unexpected string constant in ""names(data) <- c(""date"", ""ticker"" ""index""""
+"

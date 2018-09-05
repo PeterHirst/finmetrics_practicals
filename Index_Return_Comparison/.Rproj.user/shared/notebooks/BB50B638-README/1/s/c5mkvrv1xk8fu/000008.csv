@@ -1,0 +1,29 @@
+"0","monthlyreturns <- 
+data %>% 
+  mutate(year_month = format(date, ""%Y%B"")) %>% 
+  group_by(year_month, ticker) %>% 
+# Now filter to just have the last date of each month, as we are essentially calculating 
+#""monthly"" returns
+filter(date == last(date)) %>%
+  ungroup() %>% 
+  
+#Calculate the monthly returns
+group_by(ticker) %>% 
+  mutate(monthly_returns = index/lag(index) - 1) %>% 
+  mutate(monthly_returns = coalesce(monthly_returns, 0)) %>% 
+  ungroup() %>% 
+  
+# Next we want to add up the market cap by sector
+group_by(country, sector, date) %>% 
+  mutate(sector_cap=sum(cap)) %>% 
+  
+# Now group by ticker and 
+#mutate(weight= cap/sector_cap) %>% #delete this?
+  
+# Calculate the weighted indices by multiplying the TRI (index) by the weight above
+mutate(weighted_index_return = sum(monthly_returns*weight)) %>% 
+summarise(weighted_monthly_returns = mean(weighted_index_return))
+"
+"2","Error in mutate_impl(.data, dots) : 
+  Evaluation error: object 'weight' not found.
+"

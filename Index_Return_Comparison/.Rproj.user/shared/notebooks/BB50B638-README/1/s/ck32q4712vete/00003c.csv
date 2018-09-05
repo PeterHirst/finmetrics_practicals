@@ -1,0 +1,5 @@
+"0","chart.RollingPerformance(xts_dailyreturns_materials, FUN = ""sd"", width = 4, main = ""Rolling 60 day sd of the materials sector"", legend.loc = ""top middle"")
+"
+"2","Error in legend(x = lc$x, y = lc$y, legend = legend.names, xjust = lc$xjust,  : 
+  invalid coordinate lengths
+"
