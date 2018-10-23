@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1540303946318.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "91EB2569",
+    "lastKnownWriteTime" : 2594179763115393024,
+    "last_content_update" : 1540303946318,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "DC30EE67",
+        "caption" : "porteqw",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=porteqw&cache_key=DC30EE67",
+        "displayedObservations" : 2285,
+        "environment" : "",
+        "object" : "porteqw",
+        "preview" : 0,
+        "totalObservations" : 2285,
+        "variables" : 1
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

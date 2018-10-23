@@ -187,6 +187,11 @@ weight, na.rm = TRUE)) %>% filter(PortfolioReturn != 0)
 
 ```
 
+This chunk below includes the calculations necessary to plot univariate GARCH models of all of the series:
+```{r}
+
+```
+
 
 After doing tyhe necessary calcs above, I calculate the portfolio cumulative return and plot it using ggplot. This is done in two stages in the code chunk below.
 ```{r cumulative return ggplot}

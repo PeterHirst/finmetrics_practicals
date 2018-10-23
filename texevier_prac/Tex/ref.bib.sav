@@ -1,21 +1,13 @@
 % Encoding: UTF-8
-@article{fama1997,
-  title={Industry costs of equity},
-  author={Fama, Eugene F and French, Kenneth R},
-  journal={Journal of financial economics},
-  volume={43},
-  number={2},
-  pages={153--193},
-  year={1997},
-  publisher={Elsevier}
-}
-
-
-@article{grinold2000,
-  title={Active portfolio management},
-  author={Grinold, Richard C and Kahn, Ronald N},
-  year={2000},
-  publisher={McGraw Hill New York, NY}
+@article{Tsay1989,
+  title={Testing and modeling threshold autoregressive processes},
+  author={Tsay, Ruey S},
+  journal={Journal of the American statistical association},
+  volume={84},
+  number={405},
+  pages={231--240},
+  year={1989},
+  publisher={Taylor \& Francis Group}
 }
 
 
