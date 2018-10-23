@@ -10,6 +10,7 @@ The purpose of this README is to walk through the programming required for the p
 
 This README will include most of my data wrangling (actually not as it seems one must do the data wrangling either in a fucntional environment or directly in the template Rmd). Since I have not yet been able to get accustomed to creating functions and sourcing them in the template, I do all data wrangling here as well.
 
+# Load data
 I start by loading the data:
 ```{r Load data and packages}
 library(rmsfuns)
@@ -19,8 +20,9 @@ dailydata <- read_csv("https://raw.githubusercontent.com/Nicktz/ExDat/master/ext
     col_types = cols(.default = "d", Date = "D"))
 ```
 
+# Returns and moment tables
 The code chunk below creates the returns for each of the stocks:
-```{r}
+```{r Moment tables}
 # Load the necessary packages
 library(xtable)
 library(psych)
@@ -79,7 +81,9 @@ table2 <-
              caption.placement = 'bottom'
             )
 ```
-Now, in the code chunk below, I calculate the full sample correlations between the stocks. It is possible to do this in very few lines of code. In fact, one can merely "print" it in the pdf at the bottom.
+
+# Full sample correlations
+Now, in the code chunk below, I calculate the full sample correlations between the stocks. It is possible to do this in very few lines of code. In fact, one can merely "print" it in the pdf at the bottom, as seen in the code chunk.
 ```{r Correlations}
 print.xtable(xtable(cor(dailydata[, c(2:8)], use = "complete.obs"),
                     caption = "Full sample correlations between stocks \\label{correlations}"),
@@ -91,8 +95,43 @@ print.xtable(xtable(cor(dailydata[, c(2:8)], use = "complete.obs"),
 )
 ```
 
+# GARCH models
+This chunk below includes the calculations necessary to plot univariate GARCH models of all of the series:
+```{r GARCH}
+if (!require("rugarch")) install.packages("rugarch")
+library(rugarch)
+
+cl = makePSOCKcluster(10)
+
+# Make the data wide
+wide_returns <- returns %>% 
+  select(-c(Scores, LogReturns)) %>% 
+  spread(Tickers, Returns) %>% tbl_xts()
+#make the portfolio
+porteqw = Return.portfolio(wide_returns, weight = NULL, geometric = FALSE)
+
+AC = autoarfima(as.numeric(porteqw), ar.max = 2, ma.max = 2, 
+                criterion = "AIC", method = "partial", arfima = FALSE, include.mean = NULL, 
+                distribution.model = "norm", solver = "solnp", cluster = cl)
+
+#Specify the GARCH model
+garch11 <-
+ugarchspec(
+variance.model = list(model = c("sGARCH","gjrGARCH","eGARCH","fGARCH","apARCH")[1],
+garchOrder = c(2, 2)),
+mean.model = list(armaOrder = c(1, 0), include.mean = TRUE),
+distribution.model = c("norm", "snorm", "std", "sstd", "ged", "sged", "nig", "ghyp", "jsu")[1])
+
+garchfit1 = ugarchfit(spec = garch11, data = as.numeric(porteqw))
+
+# To plot the processes:
+plot(garchfit1, which = "all")
+
+```
+
+# Cumulative returns
 The next task, which I tackle in the code chunk below, is to create a portfolio, of all the stocks in my sample. The portfolio is then used to calculate the cumulative returns.  
-```{r}
+```{r Cumulative returns}
 if (!require("rportfolios")) install.packages("rportfolios")
 library(rportfolios)
 library(ggthemes)
@@ -188,7 +227,7 @@ weight, na.rm = TRUE)) %>% filter(PortfolioReturn != 0)
 ```
 
 
-After doing tyhe necessary calcs above, I calculate the portfolio cumulative return and plot it using ggplot. This is done in two stages in the code chunk below.
+After doing the necessary calcs above, I calculate the portfolio cumulative return and plot it using ggplot. This is done in two stages in the code chunk below.
 ```{r cumulative return ggplot}
 # Portfolio cumulative return
 Cum_EW <- 
@@ -206,4 +245,4 @@ Cum_EW %>%
 
 # This will then plot the cumulative returns for portfolio, which is exactly what we are looking for.
 ```
-
+END.

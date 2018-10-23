@@ -16,7 +16,7 @@
         "name" : "garchfit1",
         "title" : "garchfit1"
     },
-    "relative_order" : 7,
+    "relative_order" : 3,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "object_explorer"
