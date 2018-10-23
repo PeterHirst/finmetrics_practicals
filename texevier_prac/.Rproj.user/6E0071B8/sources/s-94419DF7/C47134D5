@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "3441522753",
+    "hash" : "0",
     "id" : "C47134D5",
-    "lastKnownWriteTime" : 1540306664,
-    "last_content_update" : 1540306664473,
+    "lastKnownWriteTime" : 1540321380,
+    "last_content_update" : 1540321380802,
     "path" : "~/finmetrics/practicals/finmetrics_practicals/texevier_prac/Hirst.Rmd",
     "project_path" : "Hirst.Rmd",
     "properties" : {
-        "cursorPosition" : "221,30",
-        "scrollLine" : "210"
+        "cursorPosition" : "134,209",
+        "scrollLine" : "130"
     },
     "relative_order" : 1,
     "source_on_save" : false,

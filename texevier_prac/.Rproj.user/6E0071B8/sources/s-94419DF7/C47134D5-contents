@@ -132,7 +132,7 @@ The purpose of this section is to show that I am able to reference in R Markdown
 How about referencing an author and page number wrapped around in brackets? @Tsay1989 states that "AR1 processes are persistent processes that can best be explained by including an AR1 term and an error term" [@Tsay1989 p 56].
 
 # Unconditional (full sample) correlations between the stocks \label{correlations}
-This section aims to calculate the full sample correlations between the stocks in our portfolio. Naturally, the diagonal entries will all equal unity^[By defintion, the correlation between the stock and itsefl is one.], whereas the off-diagonals give us a sense of the coveriance between the stocks in our portfolio. See table \ref{table_corr} below for the correlation matrix.
+This section aims to calculate the full sample correlations between the stocks in our portfolio. Naturally, the diagonal entries will all equal unity^[By defintion, the correlation between the stock and itself is one.], whereas the off-diagonals give us a sense of the coveriance between the stocks in our portfolio. See table \ref{table_corr} below for the correlation matrix.
 ```{r Table2, results='asis'}
 # Here, I generate a table with the full sample correlations of all the stocks in the sample.
 
